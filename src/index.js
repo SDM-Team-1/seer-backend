@@ -1,15 +1,19 @@
-const mongoose = require('mongoose');
-const dotenv = require('dotenv').config({ silent: true });
+/* eslint-disable class-methods-use-this */
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-console */
+const mongoose = require("mongoose");
+const dotenv = require("dotenv").config({ silent: true });
 
 const username = process.env.MONGO_USER;
 const password = process.env.MONGO_PASSWORD;
-const clusterURL = 'seer-mongo-main.ds0vt.mongodb.net';
-const database = 'seer-main';
+const clusterURL = "seer-mongo-main.ds0vt.mongodb.net";
+const database = "seer-main";
 
 const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function () {
-  console.log("Connected to server at", new Date().toISOString())
+db.on("error", console.error.bind(console, "connection error:"));
+db.once("open", () => {
+  console.log("Connected to server at", new Date().toISOString());
 });
 
 class Database {
@@ -22,10 +26,10 @@ class Database {
     mongoose
       .connect(uri)
       .then(() => {
-        console.log('Database connection successful');
+        console.log("Database connection successful");
       })
-      .catch((err) => {
-        console.error('Database connection error');
+      .catch((_err) => {
+        console.error("Database connection error");
       });
   }
 }
