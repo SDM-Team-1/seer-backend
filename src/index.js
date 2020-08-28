@@ -3,15 +3,13 @@ const dotenv = require('dotenv').config({ silent: true });
 
 const username = process.env.MONGO_USER;
 const password = process.env.MONGO_PASSWORD;
-const clusterURL = 'seer-mongo-main.ds0vt.mongodb.net'; // REPLACE WITH YOUR DB SERVER
-const database = 'seer-main'; // REPLACE WITH YOUR DB NAME
-
-console.log('username', username);
+const clusterURL = 'seer-mongo-main.ds0vt.mongodb.net';
+const database = 'seer-main';
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () {
-  // we're connected!
+  console.log("Connected to server at", new Date().toISOString())
 });
 
 class Database {
