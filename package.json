@@ -1,0 +1,29 @@
+{
+  "name": "seer-backend",
+  "version": "0.0.1",
+  "description": "Node.js backend for SEER project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SDM-Team-1/seer-backend.git"
+  },
+  "keywords": [
+    "seer",
+    "mern",
+    "node",
+    "research"
+  ],
+  "author": "Celina Abo, Fatimah Alyami, Sebin Benjamin and Suby Siby",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/SDM-Team-1/seer-backend/issues"
+  },
+  "homepage": "https://github.com/SDM-Team-1/seer-backend#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "mongoose": "^5.10.1"
+  }
+}
