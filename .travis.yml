@@ -1,0 +1,13 @@
+language: node_js
+node_js:
+- 12
+
+deploy:
+  provider: heroku
+  api_key:
+    secure: rQx95VP665oOdWiajm8SWMQZYIMgw+QOT4aiHmWTX5tRZOk+OnHBpWWhU61U1jnYsWz34k+0uCpjTFAYGXLbNQ1ld6kybvpTSZr2BtjGRIfIFwJVYQ/wltC9ba4JNhez+cNumvugPOOwH4DyKhziC7YWvqxUReVUTgsC+/UD2Jj7ci+RVMf7Y3l0Moxv9KEV4GGf6Mu+wfp2fqoByAPsSATbbCAdLct4BuxBt9pWtE0YjzecMgduV0nQt+E9UY5eypnDc6GJYv4Dc0VTBMDgeq4IgSumNI5Pi6ruxLsKvKImTW4kxW+Qt8XRxOqT2oaEdD0UmMRpNpZvbH6rzM/yR/MXvcrqO5OGmD60ikS3L8qcnHgbxxk5aRJLLcF41NCYjykCYot5Y6oleZfBAfbzIfIxLjJ6bawLAOwDZFjJ4maSW5VTrCDs3WmAvufEqPlb9lwAQHg47IpLvdoMhWX3z/PlG8JFveSlCVrxhWjZKN+rAjrYRempgGS//t+plLe1cLBEiHWzNGXIqy3kvtR8MIkLCuEc2XWM1oDSFdtDro5+BsYa1mXLu2qvnPHOqxLaJx8mlCPv/h0S7wjRrazzEEeBX0FBeWgGFKhRLhJMGsM0c9pFrVHq36i+cgSh96o1/qbWcRelFRGU/21OcsHjcaw7KcueDe8K13Eq5S4rsQA=
+  app: seer-backend
+  on:
+    repo: SDM-Team-1/seer-backend
+    branch: master
+  skip_cleanup: 'true'
