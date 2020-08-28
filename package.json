@@ -4,7 +4,7 @@
   "description": "Node.js backend for SEER project",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Hello: Running fake tests\" && exit 0"
+    "test": "mocha --reporter spec"
   },
   "repository": {
     "type": "git",
@@ -25,5 +25,8 @@
   "dependencies": {
     "dotenv": "^8.2.0",
     "mongoose": "^5.10.1"
+  },
+  "devDependencies": {
+    "mocha": "^8.1.2"
   }
 }
