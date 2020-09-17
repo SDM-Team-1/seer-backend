@@ -3,10 +3,6 @@
   "version": "0.0.1",
   "description": "Node.js backend for SEER project",
   "main": "index.js",
-  "scripts": {
-    "start": "node src/index.js",
-    "test": "mocha --reporter spec tests/**/*.js"
-  },
   "engines": {
     "node": "12.13.x"
   },
@@ -28,16 +24,31 @@
   "homepage": "https://github.com/SDM-Team-1/seer-backend#readme",
   "dependencies": {
     "dotenv": "^8.2.0",
+    "express": "^4.17.1",
     "mongoose": "^5.10.1"
   },
   "devDependencies": {
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
     "chai": "^4.2.0",
-    "eslint": "^7.7.0",
+    "eslint": "^7.9.0",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-prettier": "^3.1.4",
+    "husky": "^4.3.0",
     "mocha": "^8.1.2",
     "prettier": "^2.1.1"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "mocha --reporter spec tests/**/*.js",
+    "lint": "eslint -f table \"./src/**/*.js\""
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint && CI=true npm test",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
   }
 }
