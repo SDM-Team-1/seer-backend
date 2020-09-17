@@ -1,6 +1,7 @@
-const express = require("express");
-const { environmentConfig: envConfig } = require("./config/index");
-const { connect } = require("./utils/db");
+/* eslint-disable no-console */
+const express = require('express');
+const { environmentConfig: envConfig } = require('./config/index');
+const { connect } = require('./utils/db');
 
 const app = express();
 
