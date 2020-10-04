@@ -1,22 +1,28 @@
 language: node_js
 node_js:
-  - 'stable'
+  - stable
 cache:
   directories:
-    - 'node_modules'
+    - node_modules
+
 jobs:
   include:
     - stage: Run ESlint checks
       script: 'npm run lint'
-    - stage: Run Unit tests 
+
+    - stage: Run Unit tests
       script: 'npm run test'
+
+    - stage: Build node project
+      script: 'npm run start:build'
+
     - stage: Deploy node backend to Heroku
       deploy:
         provider: heroku
+        cleanup: true
         api_key:
-          secure: rQx95VP665oOdWiajm8SWMQZYIMgw+QOT4aiHmWTX5tRZOk+OnHBpWWhU61U1jnYsWz34k+0uCpjTFAYGXLbNQ1ld6kybvpTSZr2BtjGRIfIFwJVYQ/wltC9ba4JNhez+cNumvugPOOwH4DyKhziC7YWvqxUReVUTgsC+/UD2Jj7ci+RVMf7Y3l0Moxv9KEV4GGf6Mu+wfp2fqoByAPsSATbbCAdLct4BuxBt9pWtE0YjzecMgduV0nQt+E9UY5eypnDc6GJYv4Dc0VTBMDgeq4IgSumNI5Pi6ruxLsKvKImTW4kxW+Qt8XRxOqT2oaEdD0UmMRpNpZvbH6rzM/yR/MXvcrqO5OGmD60ikS3L8qcnHgbxxk5aRJLLcF41NCYjykCYot5Y6oleZfBAfbzIfIxLjJ6bawLAOwDZFjJ4maSW5VTrCDs3WmAvufEqPlb9lwAQHg47IpLvdoMhWX3z/PlG8JFveSlCVrxhWjZKN+rAjrYRempgGS//t+plLe1cLBEiHWzNGXIqy3kvtR8MIkLCuEc2XWM1oDSFdtDro5+BsYa1mXLu2qvnPHOqxLaJx8mlCPv/h0S7wjRrazzEEeBX0FBeWgGFKhRLhJMGsM0c9pFrVHq36i+cgSh96o1/qbWcRelFRGU/21OcsHjcaw7KcueDe8K13Eq5S4rsQA=
+          secure: PwvzSVw/Q5XdXYd3V3rvCAAVncAN6aMxai9AZY43KgheyxHSHgDdVp4LfhWuvTSXYSMmu3EorCPIHEC8S/wOXrnjSuQGM5+82VYYFyAWY71uK+NBEtqaMpHLVtleMj7nbjAVgKlqg1pa4S+bRUGq2rE1J5l3nWPQ7vaQv5fCUZU8Issyq72gQRWteGEyO5g7AOQylCJy14Tlczj3L+qCb3myR4fUStfkTnw02sGcMKcaVuEpJMFpvxVGWsvTr9cV9klg+657r8vsXdYcyWVXgSRd5/2JXa0er31FoVZv2ftx23/Iij6tb7MxQYn9zcHZIdcEPeXWIvMMvgdZ2YEWxS9jujOA743f+DOkE3ska8zQwkKDegPeeOPvAJbifu32itNB+vH+647GuIg9g8jf8dXaR7MShSfv3ohyzAFoXrQpm+WX5aHrIu/dzVXamuWzObgbgvkVCd0QDEkE84WtHkHViKmPiVVUcsfvtmdIp3tD2/At04PfnC+kyBDi3uOLdECx2coQIprKqiJd/8HfTT9jIXuud68v/hUgjz8rL3+dvUCGRLDCTWL6P9SxBiSO44HQ3ej7SwhXUsk0d4TzI1GXTH5T/C03EH8srq9XzuWHKAh15rpj2WNvZdimGjhwVm56wvLj2MSrT2BmBCzbfAuMkf3etpDYYKozyVFLiGQ=
         app: seer-backend
         on:
           repo: SDM-Team-1/seer-backend
           branch: master
-        skip_cleanup: 'true'
