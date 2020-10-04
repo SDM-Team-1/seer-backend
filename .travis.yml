@@ -10,6 +10,8 @@ jobs:
       script: 'npm run lint'
     - stage: Run Unit tests 
       script: 'npm run test'
+    - stage: Build node project 
+      script: 'npm run start:build'
     - stage: Deploy node backend to Heroku
       deploy:
         provider: heroku
