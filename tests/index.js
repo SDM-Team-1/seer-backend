@@ -1,6 +1,4 @@
-const chai = require('chai');
-
-const { expect } = chai;
+import { expect } from 'chai';
 
 describe('Math', () => {
   describe('#abs()', () => {
