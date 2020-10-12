@@ -18,7 +18,7 @@ const start = async () => {
   try {
     await connect(envConfig.dbURI, { useUnifiedTopology: true });
     app.listen(envConfig.port, () => {
-      console.log(`REST API on http://localhost:${envConfig.port}/api`);
+      console.debug(`REST API on http://localhost:${envConfig.port}/api`);
     });
   } catch (e) {
     console.error(e);
