@@ -3,6 +3,7 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-console */
 import Article from './article.model';
+import articleQuery from './article.query';
 
 // eslint-disable-next-line arrow-body-style
 const getMapFromArrayOfObjects = (arr) => {
@@ -34,9 +35,11 @@ const createArticle = (model) => async (req, res) => {
 
 const getMany = (model) => async (req, res) => {
   try {
-    // eslint-disable-next-line no-underscore-dangle
-    const docs = await model.find().lean().exec();
-    console.log('docs', docs);
+    const { from, to, practice, benefits } = req.body;
+    const docs = await model
+      .find(articleQuery(from, to, practice, benefits))
+      .lean()
+      .exec();
     res.status(200).json({ data: docs });
   } catch (e) {
     console.error(e);
