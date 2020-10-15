@@ -8,7 +8,6 @@ import articleQuery from './article.query';
 // eslint-disable-next-line arrow-body-style
 const getMapFromArrayOfObjects = (arr) => {
   const arrO = arr.map((element) => Object.entries(element)[0]);
-  console.log(arrO);
   return new Map(arrO);
 };
 
@@ -35,9 +34,12 @@ const createArticle = (model) => async (req, res) => {
 
 const getMany = (model) => async (req, res) => {
   try {
-    const { from, to, practice, benefits } = req.body;
+    const { from, to, practiceBenefit } = req.query;
+    const { practice, benefit } = JSON.parse(practiceBenefit);
     const docs = await model
-      .find(articleQuery(from, to, practice, benefits))
+      .find(
+        articleQuery(parseInt(from, 10), parseInt(to, 10), practice, benefit),
+      )
       .lean()
       .exec();
     res.status(200).json({ data: docs });
