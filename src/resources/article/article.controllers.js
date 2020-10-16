@@ -4,6 +4,7 @@
 /* eslint-disable no-console */
 import Article from './article.model';
 import articleQuery from './article.query';
+import environmentConfig from '../../config';
 
 // eslint-disable-next-line arrow-body-style
 const getMapFromArrayOfObjects = (arr) => {
@@ -27,8 +28,8 @@ const createArticle = (model) => async (req, res) => {
     const doc = await model.create(article);
     res.status(201).json({ article: doc });
   } catch (e) {
-    console.error(e.message);
-    res.status(400).json({ message: e.message }).end();
+    if (!environmentConfig.isTest) console.error(e.message);
+    res.status(400).json({ error: e.message }).end();
   }
 };
 
@@ -44,7 +45,7 @@ const getMany = (model) => async (req, res) => {
       .exec();
     res.status(200).json({ data: docs });
   } catch (e) {
-    console.error(e);
+    if (!environmentConfig.isTest) console.error(e);
     res.status(400).end();
   }
 };
