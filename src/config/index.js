@@ -5,9 +5,9 @@ const env = process.env.NODE_ENV || 'development';
 
 const baseConfig = {
   env,
-  isDev: env === 'development',
-  isTest: env === 'testing',
-  isProd: env === 'production',
+  isDev: env === 'development' || env === 'dev',
+  isTest: env === 'testing' || env === 'test',
+  isProd: env === 'production' || env === 'prod' || env === 'live',
 };
 
 switch (env) {
@@ -35,7 +35,7 @@ switch (env) {
     {
       const envConfig = require('./prod').config;
       baseConfig.port = process.env.PORT || 5000;
-      baseConfig.dbURI = `mongodb+srv://${envConfig.username}:${envConfig.password}@${envConfig.clusterURL}/${envConfig.database}?retryWrites=true&w=majority&replicaSet=atlas-o0cppa-shard-0&readPreference=primary`;
+      baseConfig.dbURI = `mongodb+srv://${envConfig.username}:${envConfig.password}@${envConfig.clusterURL}/${envConfig.database}?retryWrites=true&w=majority&replicaSet=atlas-pf4wgs-shard-0&readPreference=primary`;
     }
     break;
 
